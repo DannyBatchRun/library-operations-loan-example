@@ -15,7 +15,7 @@ import com.library.example.first.service.*;
 import java.util.*;
 
 @RestController
-public class LibraryFirstController {
+public class LibraryDatabaseController {
 	
 	@Autowired
 	private BookService service;

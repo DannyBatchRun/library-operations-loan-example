@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.library.example</groupId>
 	<artifactId>first</artifactId>
 	<version>1.0</version>
 	<name>library-example-first</name>
-	<description>Esempio di una Biblioteca - Primo Microservizio</description>
+	<description>Library Example Database</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,12 +34,13 @@
 		<dependency>
     		<groupId>org.hibernate</groupId>
     		<artifactId>hibernate-core</artifactId>
-    		<version>6.1.4.Final</version>
+    		<version>6.4.4.Final</version>
     		<type>pom</type>
 		</dependency>
 		<dependency>
      		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
 		</dependency>
 	</dependencies>
 
@@ -50,7 +51,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>libraryoperations</finalName>
+		<finalName>librarydatabase</finalName>
 	</build>
 
 </project>

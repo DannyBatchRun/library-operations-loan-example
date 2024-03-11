@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.library.example</groupId>
 	<artifactId>second</artifactId>
 	<version>1.0</version>
 	<name>library-example-second</name>
-	<description>Esempio di una Biblioteca - Secondo Microservizio</description>
+	<description>Library to Loan Example</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,12 +34,13 @@
 		<dependency>
     		<groupId>org.hibernate</groupId>
     		<artifactId>hibernate-core</artifactId>
-    		<version>6.1.4.Final</version>
+    		<version>6.4.4.Final</version>
     		<type>pom</type>
 		</dependency>
 		<dependency>
      		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
 		</dependency>
 	</dependencies>
 
