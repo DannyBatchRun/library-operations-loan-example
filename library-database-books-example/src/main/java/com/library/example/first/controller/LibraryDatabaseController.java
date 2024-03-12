@@ -19,7 +19,12 @@ public class LibraryDatabaseController {
 	
 	@Autowired
 	private BookService service;
-	
+
+	@GetMapping("/health")
+	public String getHealth() {
+		return "Service is up and running";
+	}
+
 	@GetMapping("/getbooks")
 	public ResponseEntity<List<Book>> getAllBooks() {
 		List<Book> books = service.getBooks();

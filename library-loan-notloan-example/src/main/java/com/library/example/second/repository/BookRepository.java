@@ -8,7 +8,6 @@ import com.library.example.second.model.Book;
 @Repository
 
 public interface BookRepository extends CrudRepository<Book, Long> {
-	
 	public Book findByIdBook(long idBook);
 
 }
