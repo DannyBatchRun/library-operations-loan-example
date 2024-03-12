@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="LibraryDatabase" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="first" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.library.example.first.LibraryExampleFirstApplication" />
+    <option name="VM_PARAMETERS" value="-Djasypt.encryptor.password=passwordtoencrypt" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
