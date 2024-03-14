@@ -1,9 +1,8 @@
 # library-operations-loan-example
-Spring API Rest Project Example of a a Generic Library for Loan.<br />
+Spring API Rest Project Example of a a Generic Library.<br />
 <br />
-One - Library Operations ---> Add, Remove or Getting all Books Registered.<br />
-Two - Library Loan ---> Send or Return a Book on/from Loan<br />
+<strong>Library Database</strong> ---> Database of Books that make all basic operations for add or remove a book.<br />
+<strong>Library Loan</strong> ---> Send a Book on Loan or return a Book from Loan.<br />
 <br />
-You can test it cloning project and then, importing in your IDE. Please make sure that you have MySQL installed with Driver Connector.<br />
-There are also some Jenkins scripts as groovy for building with Maven Automatically.<br />
+Database is provided by CockroachDB based on PostgreSQL. You can change it with your database in application.properties files.<br />
 Enjoy!
