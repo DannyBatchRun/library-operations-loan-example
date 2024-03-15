@@ -2,7 +2,7 @@ trigger:
   batch: true
   branches:
     include:
-      - azureIntegration
+    - azureIntegration
 
 resources:
   - repo: self
@@ -17,7 +17,7 @@ stages:
       - job: Maven_Stage
         displayName: Maven Stage
         pool:
-          vmImage: ubuntu-latest
+          name: Default
         steps:
           - script: |
               sudo apt-get update
@@ -38,7 +38,7 @@ stages:
       - job: Build
         displayName: Build
         pool:
-          vmImage: ubuntu-latest
+          name: Default
         steps:
           - task: Docker@2
             displayName: Build an image
