@@ -31,12 +31,11 @@ stages:
               goals: 'clean install'
               options: '-B'
             displayName: 'Maven clean install'
-          - task: DownloadPipelineArtifact@2
+          - task: PublishBuildArtifacts@1
             inputs:
-              buildType: 'current'
-              artifactName: 'BuildDatabase JAR'
-              itemPattern: '$(System.ArtifactsDirectory)/library-database-books-example/target/librarydatabase.jar'
-              targetPath: '$(Pipeline.Workspace)'
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/library-database-books-example/target/librarydatabase.jar'
+              ArtifactName: 'BuildDatabase JAR'
+              publishLocation: 'Container'
   - stage: Build_and_Push_Stage
     displayName: Build_and_Push_Stage
     jobs:
