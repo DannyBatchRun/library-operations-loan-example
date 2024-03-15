@@ -1,5 +1,8 @@
 trigger:
-  - azureIntegration
+  batch: true
+  branches:
+    include:
+      - azureIntegration
 
 resources:
   - repo: self
@@ -9,37 +12,36 @@ variables:
 
 stages:
   - stage: Maven_Stage
-    displayName: 'Install JDK21 with Maven Install'
+    displayName: Install JDK21 with Maven Install
     jobs:
       - job: Maven_Stage
-        displayName: 'Maven Stage'
+        displayName: Maven Stage
         pool:
           vmImage: ubuntu-latest
         steps:
           - script: |
               sudo apt-get update
               sudo apt-get install -y openjdk-21-jdk
+              cd $(Build.SourcesDirectory)/library-database-books-example/library-database-books-example
             displayName: 'Install OpenJDK 21'
           - task: Maven@3
             inputs:
               mavenPomFile: 'pom.xml'
-              javaHomeOption: 'JDKVersion'
-              jdkVersionOption: '1.21'
               mavenOptions: '-Xmx3072m'
               mavenAuthenticateFeed: false
               goals: 'clean install'
-              workingDirectory: '$(Build.SourcesDirectory)/library-database-books-example/library-database-books-example'
+              options: '-B'
             displayName: 'Maven clean install'
   - stage: Build_and_Push_Stage
-    displayName: 'Build and Push Stage'
+    displayName: Build_and_Push_Stage
     jobs:
       - job: Build
-        displayName: 'Build'
+        displayName: Build
         pool:
           vmImage: ubuntu-latest
         steps:
           - task: Docker@2
-            displayName: 'Build an image'
+            displayName: Build an image
             inputs:
               command: build
               dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/library-database-books-example/Dockerfile'
