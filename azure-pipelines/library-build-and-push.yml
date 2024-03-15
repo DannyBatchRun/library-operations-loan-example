@@ -43,6 +43,6 @@ stages:
             displayName: Build an image
             inputs:
               command: build
-              dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/library-database-books-example/Dockerfile'
+              dockerfile: '$(Build.SourcesDirectory)/library-database-books/Dockerfile'
               tags: |
                 $(tag)
