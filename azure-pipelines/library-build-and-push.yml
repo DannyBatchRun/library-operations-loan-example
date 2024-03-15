@@ -30,14 +30,29 @@ stages:
               mavenAuthenticateFeed: false
               goals: 'clean install'
               options: '-B'
-            displayName: 'Maven clean install'
+            displayName: 'Mvn Install LibraryDatabase'
           - task: PublishBuildArtifacts@1
             inputs:
               PathtoPublish: '$(Build.SourcesDirectory)/library-database-books-example/target/librarydatabase.jar'
               ArtifactName: 'BuildDatabase JAR'
               publishLocation: 'Container'
+            displayName: 'Publish Artifact LibraryDatabase'
+          - task: Maven@3
+            inputs:
+              mavenPomFile: '$(Build.SourcesDirectory)/library-loan-notloan-example/pom.xml'
+              mavenOptions: '-Xmx3072m'
+              mavenAuthenticateFeed: false
+              goals: 'clean install'
+              options: '-B'
+            displayName: 'Mvn Install LibraryLoan'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.SourcesDirectory)/library-loan-notloan-example/target/libraryloan.jar'
+              ArtifactName: 'BuildLoan JAR'
+              publishLocation: 'Container'
+            displayName: 'Publish Artifact LibraryLoan'
   - stage: Build_and_Push_Stage
-    displayName: Build_and_Push_Stage
+    displayName: Build and Push Stage
     jobs:
       - job: Build
         displayName: Build
@@ -45,16 +60,30 @@ stages:
           name: Default
         steps:
           - task: DownloadBuildArtifacts@1
-            displayName: Download JAR File LibraryDatabase
+            displayName: Download Artifact LibraryDatabase
             inputs:
               buildType: 'current'
               downloadType: 'single'
               artifactName: 'BuildDatabase JAR'
               downloadPath: '$(Build.SourcesDirectory)/library-database-books-example/target/librarydatabase.jar'
+          - task: DownloadBuildArtifacts@1
+            displayName: Download Artifact LibraryLoan
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'BuildLoan JAR'
+              downloadPath: '$(Build.SourcesDirectory)/library-loan-notloan-example/target/libraryloan.jar'
+          - task: Docker@2
+            displayName: Build Image LibraryDatabase
+            inputs:
+              command: build
+              dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/Dockerfile'
+              tags: |
+                $(tag)
           - task: Docker@2
             displayName: Build an image
             inputs:
               command: build
-              dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/Dockerfile'
+              dockerfile: '$(Build.SourcesDirectory)/library-loan-notloan-example/Dockerfile'
               tags: |
                 $(tag)
