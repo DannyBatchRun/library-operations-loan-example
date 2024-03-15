@@ -12,10 +12,10 @@ variables:
 
 stages:
   - stage: Maven_Stage
-    displayName: Install JDK21 with Maven Install
+    displayName: Maven Stage
     jobs:
       - job: Maven_Stage
-        displayName: Maven Stage
+        displayName: JDK21 Install and Maven Build
         pool:
           name: Default
         steps:
