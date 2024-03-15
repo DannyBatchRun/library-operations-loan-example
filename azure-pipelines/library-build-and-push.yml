@@ -22,7 +22,7 @@ stages:
           - script: |
               sudo apt-get update
               sudo apt-get install -y openjdk-21-jdk
-              cd $(Build.SourcesDirectory)/library-database-books-example/library-database-books-example
+              cd $(Build.SourcesDirectory)/library-database-books-example
             displayName: 'Install OpenJDK 21'
           - task: Maven@3
             inputs:
