@@ -33,7 +33,7 @@ stages:
             displayName: 'Maven clean install'
           - task: PublishBuildArtifacts@1
             inputs:
-              PathtoPublish: '$(Build.ArtifactStagingDirectory)/library-database-books-example/target/librarydatabase.jar'
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/library-database-books-example/target'
               ArtifactName: 'BuildDatabase JAR'
               publishLocation: 'Container'
   - stage: Build_and_Push_Stage
