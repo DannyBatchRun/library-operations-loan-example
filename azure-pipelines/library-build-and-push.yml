@@ -72,14 +72,16 @@ stages:
               artifactName: 'libraryloan.jar'
               downloadPath: '$(Build.SourcesDirectory)/library-loan-notloan-example/target/'
           - task: Docker@2
-            displayName: Build Image LibraryDatabase
+            displayName: Build an image
             inputs:
-              command: build
+              command: buildAndPush
+              repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/Dockerfile'
-              tags: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example:library-database-azurerelease'
+              tags: 'library-database-azurerelease'
           - task: Docker@2
             displayName: Build an image
             inputs:
-              command: build
+              command: buildAndPush
+              repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-loan-notloan-example/Dockerfile'
-              tags: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example:library-loan-azurerelease'          
+              tags: 'library-loan-azurerelease'
