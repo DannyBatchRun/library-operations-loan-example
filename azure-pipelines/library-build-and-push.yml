@@ -76,7 +76,7 @@ stages:
             inputs:
               containerRegistry: 'Gitlab'
               command: buildAndPush
-              repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
+              repository: 'infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/Dockerfile'
               tags: 'library-database-azurerelease'
           - task: Docker@2
@@ -84,7 +84,7 @@ stages:
             inputs:
               containerRegistry: 'Gitlab'
               command: buildAndPush
-              repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
+              repository: 'infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-loan-notloan-example/Dockerfile'
               tags: 'library-loan-azurerelease'
           
