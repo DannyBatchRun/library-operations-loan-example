@@ -53,7 +53,7 @@ stages:
     displayName: Build and Push Stage
     jobs:
       - job: Build
-        displayName: Build
+        displayName: Build and Push on Gitlab
         pool:
           name: Default
         steps:
@@ -75,7 +75,7 @@ stages:
             displayName: Build an image
             inputs:
               containerRegistry: 'Gitlab'
-              command: build
+              command: buildAndPush
               repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/Dockerfile'
               tags: 'library-database-azurerelease'
@@ -83,7 +83,7 @@ stages:
             displayName: Build an image
             inputs:
               containerRegistry: 'Gitlab'
-              command: build
+              command: buildAndPush
               repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-loan-notloan-example/Dockerfile'
               tags: 'library-loan-azurerelease'
