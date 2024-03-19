@@ -71,10 +71,10 @@ stages:
               downloadType: 'single'
               artifactName: 'libraryloan.jar'
               downloadPath: '$(Build.SourcesDirectory)/library-loan-notloan-example/target/'
-
           - task: Docker@2
             displayName: Build an image
             inputs:
+              containerRegistry: 'Gitlab'
               command: build
               repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-database-books-example/Dockerfile'
@@ -82,6 +82,7 @@ stages:
           - task: Docker@2
             displayName: Build an image
             inputs:
+              containerRegistry: 'Gitlab'
               command: build
               repository: 'registry.gitlab.com/infrastructure4143511/library-operation-loan-example'
               dockerfile: '$(Build.SourcesDirectory)/library-loan-notloan-example/Dockerfile'
